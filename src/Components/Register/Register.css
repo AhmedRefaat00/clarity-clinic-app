@@ -1,0 +1,181 @@
+.register-container {
+  min-height: 100vh;
+  background-color: #f3f7f6;
+  display: flex;
+  justify-content: center; /* بيجيب الكارت في النص بالظبط بالعرض */
+  align-items: center;     /* بيجيب الكارت في النص بالظبط بالطول */
+  padding: 20px;
+}
+
+.register-card {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+  direction: ltr;
+}
+
+.register-title {
+  color: #0d9488;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.register-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #0d9488;
+}
+
+.register-btn {
+  background-color: #0d9488;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.register-btn:hover {
+  background-color: #0b7a70;
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.register-footer a {
+  color: #0d9488;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* ستايل الأخطاء */
+.input-error-border {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+.inline-error-text {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+  font-weight: 500;
+}
+
+/* ستايل كارت النجاح (Success State) من الفيجما */
+.success-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+.success-icon {
+  background-color: #d1fae5;
+  color: #10b981;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0 auto 20px auto;
+}
+
+.success-title {
+  color: #111827;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.success-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.btn-success-login {
+  background-color: #0d9488;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-success-login:hover {
+  background-color: #0b7a70;
+}
+
+.btn-register-submit {
+  background-color: #0d9488 !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+  display: block !important;
+}

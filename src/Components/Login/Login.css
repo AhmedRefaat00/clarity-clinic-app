@@ -1,0 +1,123 @@
+.login-container {
+  min-height: 100vh;
+  background-color: #f3f7f6;
+  display: flex;
+  justify-content: center; /* سنترة عرضية */
+  align-items: center;     /* سنترة طولية */
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: left; /* اتجاه الكلام للشمال */
+  direction: ltr;   /* من الشمال لليمين */
+}
+
+.login-title {
+  color: #0d9488;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.input-group input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #0d9488;
+}
+
+.login-btn {
+  background-color: #0d9488;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+  background-color: #0b7a70;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+.login-footer a {
+  color: #0d9488;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+/* ستايل رسائل الخطأ وحواف الحقول */
+.input-error-border {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+.inline-error-text {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+  font-weight: 500;
+}
+
+
+.btn-login-submit {
+  background-color: #0d9488 !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+  display: block !important;
+}

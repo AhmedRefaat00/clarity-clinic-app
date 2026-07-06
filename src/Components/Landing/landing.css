@@ -1,0 +1,237 @@
+/* الكود ده هو اللي هيخلي الصفحة تتظبط بالظبط */
+.landing-container {
+  min-height: 100vh;
+  background-color: #f3f7f6; /* لون الخلفية الهادي من الفيجما */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px 40px;
+  direction: ltr;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.logo-icon {
+  background-color: #0d9488;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-center {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #6b7280;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.nav-link.active {
+  background-color: #e6f4f1;
+  color: #0d9488;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-signin {
+  background: none;
+  border: none;
+  color: #0d9488;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-create {
+  background-color: #0d9488;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  gap: 60px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 550px;
+}
+
+.badge {
+  color: #0d9488;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: #e6f4f1;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: #111827;
+  margin: 20px 0 15px 0;
+  font-weight: 700;
+}
+
+.hero-description {
+  color: #4b5563;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 8px 8px 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.search-icon {
+  color: #9ca3af;
+  margin-right: 10px;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.btn-search {
+  background-color: #0d9488;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Tags */
+.tags-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+/* Right Card Styling */
+.hero-right-card {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  max-width: 500px;
+}
+
+.image-placeholder {
+  background-color: #f9fafb;
+  height: 280px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #e5e7eb;
+}
+
+.placeholder-text {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.doctor-info-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.doctor-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  background-color: #e6f4f1;
+  color: #0d9488;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.doctor-details h4 {
+  color: #111827;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.doctor-details p {
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin: 2px 0 0 0;
+}
+
+.rating {
+  color: #f59e0b;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

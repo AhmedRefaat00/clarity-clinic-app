@@ -1,0 +1,149 @@
+.booking-container {
+  min-height: 100vh;
+  background-color: #f3f7f6;
+  padding: 20px 40px;
+  direction: ltr;
+}
+
+.booking-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.booking-card {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 480px;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+}
+
+.booking-title {
+  color: #111827;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.booking-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+/* Mini Doc Summary */
+.mini-doc-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #e6f4f1;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.mini-avatar {
+  background-color: #0d9488;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.mini-info h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #111827;
+}
+
+.mini-info p {
+  margin: 2px 0 0 0;
+  color: #0d9488;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Form Styles */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.time-picker-group label, .notes-group label {
+  display: block;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.slot-box {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.slot-box:hover {
+  border-color: #0d9488;
+  color: #0d9488;
+}
+
+.slot-box.selected {
+  background-color: #0d9488;
+  color: white;
+  border-color: #0d9488;
+}
+
+.notes-group textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+}
+
+.notes-group textarea:focus {
+  border-color: #0d9488;
+}
+
+.btn-confirm-submit {
+  background-color: #0d9488;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.btn-confirm-submit:hover {
+  background-color: #0b7a70;
+}
