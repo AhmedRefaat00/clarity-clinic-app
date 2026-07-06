@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 interface LoginProps {
-  userName: string; // السطر ده اللي كان ناقص ومطلع الأيرور!
   onLoginSuccess: (name: string) => void;
-  onSwitchToRegister: () => void;
 }
 
-function Login({ userName, onLoginSuccess, onSwitchToRegister }: LoginProps) {
+function Login({ onLoginSuccess }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,8 +22,11 @@ function Login({ userName, onLoginSuccess, onSwitchToRegister }: LoginProps) {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      // عند نجاح تسجيل الدخول، هنباصي اسم افتراضي أو الاسم اللي جاي من السيستم
-      onLoginSuccess('Amr'); 
+      // Extract a nice name from email address if userName is not pre-populated
+      const computedName = email.split('@')[0];
+      const capitalizedName = computedName.charAt(0).toUpperCase() + computedName.slice(1);
+      onLoginSuccess(capitalizedName); 
+      navigate('/specialists');
     }
   };
 
@@ -60,7 +63,7 @@ function Login({ userName, onLoginSuccess, onSwitchToRegister }: LoginProps) {
         </form>
 
         <p className="auth-switch-text" style={{ marginTop: '20px', textAlign: 'center', color: '#6b7280' }}>
-          Don't have an account? <span className="switch-link" style={{ color: '#0d9488', cursor: 'pointer', fontWeight: '600' }} onClick={onSwitchToRegister}>Sign up</span>
+          Don't have an account? <span className="switch-link" style={{ color: '#0d9488', cursor: 'pointer', fontWeight: '600' }} onClick={() => navigate('/register')}>Sign up</span>
         </p>
       </div>
     </div>

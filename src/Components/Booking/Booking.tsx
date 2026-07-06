@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Booking.css';
 
 interface Doctor {
@@ -10,14 +11,15 @@ interface Doctor {
 
 interface BookingProps {
   userName: string;
-  doctor: Doctor | null; // استلام الدكتور المختار
-  onBackToDocs: () => void;
-  onConfirmBooking: () => void;
 }
 
-function Booking({ userName, doctor, onBackToDocs, onConfirmBooking }: BookingProps) {
+function Booking({ userName }: BookingProps) {
   const [selectedTime, setSelectedTime] = useState('');
   const [patientNote, setPatientNote] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const doctor = location.state?.doctor as Doctor | undefined;
 
   const availableTimes = ['03:00 PM', '04:30 PM', '05:30 PM', '07:00 PM'];
 
@@ -27,22 +29,22 @@ function Booking({ userName, doctor, onBackToDocs, onConfirmBooking }: BookingPr
       alert('Please select an appointment time!');
       return;
     }
-    onConfirmBooking();
+    navigate('/success', { state: { doctorName: doctor?.name } });
   };
 
   // لو مفيش دكتور مبعوت لسبب ما (صيانة احترازية للـ TypeScript)
   if (!doctor) {
-    return <div style={{ padding: '50px', textAlign: 'center' }}>No doctor selected. <button onClick={onBackToDocs}>Go Back</button></div>;
+    return <div style={{ padding: '50px', textAlign: 'center' }}>No doctor selected. <button onClick={() => navigate('/specialists')}>Go Back</button></div>;
   }
 
   return (
     <div className="booking-container">
       <nav className="navbar">
-        <div className="nav-left" onClick={onBackToDocs} style={{ cursor: 'pointer' }}>
-          <div className="logo-icon">{userName ? userName.substring(0, 2).toUpperCase() : ''}</div>
+        <div className="nav-left" onClick={() => navigate('/specialists')} style={{ cursor: 'pointer' }}>
+          <div className="logo-icon">{userName ? userName.substring(0, 2).toUpperCase() : 'CC'}</div>
         </div>
         <div className="nav-center"><span className="nav-link active">Book Appointment</span></div>
-        <div className="nav-right"><button className="btn-back" onClick={onBackToDocs}>← Back</button></div>
+        <div className="nav-right"><button className="btn-back" onClick={() => navigate('/specialists')}>← Back</button></div>
       </nav>
 
       <div className="booking-content">

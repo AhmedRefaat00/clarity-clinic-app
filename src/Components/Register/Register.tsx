@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 interface RegisterProps {
-  userName: string;
   onRegisterSuccess: (name: string) => void;
-  onSwitchToLogin: () => void;
 }
 
-function Register({ userName, onRegisterSuccess, onSwitchToLogin }: RegisterProps) {
+function Register({ onRegisterSuccess }: RegisterProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string }>({});
+  const navigate = useNavigate();
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +25,7 @@ function Register({ userName, onRegisterSuccess, onSwitchToLogin }: RegisterProp
 
     if (Object.keys(newErrors).length === 0) {
       onRegisterSuccess(name); 
+      navigate('/specialists');
     }
   };
 
@@ -72,7 +73,7 @@ function Register({ userName, onRegisterSuccess, onSwitchToLogin }: RegisterProp
         </form>
 
         <p className="auth-switch-text" style={{ marginTop: '20px', textAlign: 'center', color: '#6b7280' }}>
-          Already have an account? <span className="switch-link" style={{ color: '#0d9488', cursor: 'pointer', fontWeight: '600' }} onClick={onSwitchToLogin}>Sign in</span>
+          Already have an account? <span className="switch-link" style={{ color: '#0d9488', cursor: 'pointer', fontWeight: '600' }} onClick={() => navigate('/login')}>Sign in</span>
         </p>
       </div>
     </div>

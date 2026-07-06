@@ -1,30 +1,58 @@
-import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 
 interface LandingProps {
   userName: string;
-  onNavigate: (page: 'login' | 'register') => void;
+  onLogout: () => void;
 }
 
-function Landing({ userName, onNavigate }: LandingProps) {
+function Landing({ userName, onLogout }: LandingProps) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = () => {
+    navigate(`/specialists?search=${encodeURIComponent(searchQuery)}&specialty=All`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearchSubmit();
+    }
+  };
+
   return (
     <div className="landing-container">
       {/* 1. Navbar */}
       <nav className="navbar">
         <div className="nav-left">
-          {/* تم إزالة علامة الـ + وإظهار الاسم مباشرة لوحده بنظافة */}
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {userName && <span style={{ fontWeight: 'bold', color: '#111827', fontSize: '0.95rem' }}>{userName}</span>}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="logo-icon">CC</div>
+            <span style={{ fontWeight: 'bold', color: '#0d9488', fontSize: '1.2rem' }}>Clarity Clinic</span>
           </div>
         </div>
         <div className="nav-center">
-          <a href="#find-care" className="nav-link active">Find care</a>
+          <a href="#find-care" className="nav-link active" onClick={(e) => { e.preventDefault(); navigate('/specialists?search=&specialty=All'); }}>Find care</a>
           <a href="#how-it-works" className="nav-link">How it works</a>
           <a href="#for-clinics" className="nav-link">For clinics</a>
         </div>
         <div className="nav-right">
-          <button className="btn-signin" onClick={() => onNavigate('login')}>Sign in</button>
-          <button className="btn-create" onClick={() => onNavigate('register')}>Create account</button>
+          {userName ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div className="avatar" style={{ width: '30px', height: '30px', fontSize: '0.8rem' }}>
+                  {userName.substring(0, 2).toUpperCase()}
+                </div>
+                <span style={{ fontWeight: '600', color: '#1f2937', fontSize: '0.95rem' }}>{userName}</span>
+              </div>
+              <button className="btn-signin" onClick={onLogout}>Sign out</button>
+            </div>
+          ) : (
+            <>
+              <button className="btn-signin" onClick={() => navigate('/login')}>Sign in</button>
+              <button className="btn-create" onClick={() => navigate('/register')}>Create account</button>
+            </>
+          )}
         </div>
       </nav>
 
@@ -41,23 +69,32 @@ function Landing({ userName, onNavigate }: LandingProps) {
           {/* Search Box */}
           <div className="search-container">
             <span className="search-icon">🔍</span>
-            <input type="text" placeholder="e.g. dermatologist, knee pain..." />
-            <button className="btn-search">Search</button>
+            <input 
+              type="text" 
+              placeholder="e.g. dermatologist, Sarah..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button className="btn-search" onClick={handleSearchSubmit}>Search</button>
           </div>
 
           {/* Tags */}
           <div className="tags-container">
-            <span className="tag">Dermatology</span>
-            <span className="tag">Cardiology</span>
-            <span className="tag">General medicine</span>
-            <span className="tag">Pediatrics</span>
+            {['Dermatology', 'Cardiology', 'General medicine', 'Pediatrics'].map((spec) => (
+              <span key={spec} className="tag" onClick={() => navigate(`/specialists?search=&specialty=${encodeURIComponent(spec)}`)}>{spec}</span>
+            ))}
           </div>
         </div>
 
         {/* Right Side Visuals */}
         <div className="hero-right-card">
-          <div className="image-placeholder">
-            <span className="placeholder-text">clinic / care imagery</span>
+          <div style={{ width: '100%', height: '280px', overflow: 'hidden', borderRadius: '12px' }}>
+            <img 
+              src="/clinic_hero.png" 
+              alt="Clarity Clinic Hero illustration" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
           </div>
           <div className="doctor-info-card">
             <div className="doctor-profile">

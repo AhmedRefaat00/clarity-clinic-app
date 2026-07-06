@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import './FindSpecialist.css';
-
-interface Doctor {
-  id: number;
-  name: string;
-  specialty: string;
-  avatar: string;
-}
 
 interface FindSpecialistProps {
   userName: string;
-  onBackToHome: () => void;
-  onSelectDoctor: (doctor: Doctor) => void; // إضافة الـ Prop الجديد هنا
 }
 
 const DOCTORS_DATA = [
@@ -21,9 +13,12 @@ const DOCTORS_DATA = [
   { id: 4, name: 'Dr. Mohamed Omar', specialty: 'General medicine', rating: '4.7', reviews: '85', availability: 'Monday - 9:00 AM', status: 'Available', avatar: 'MO' }
 ];
 
-function FindSpecialist({ userName, onBackToHome, onSelectDoctor }: FindSpecialistProps) {
-  const [selectedSpecialty, setSelectedSpecialty] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+function FindSpecialist({ userName }: FindSpecialistProps) {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const [selectedSpecialty, setSelectedSpecialty] = useState(searchParams.get('specialty') || 'All');
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
 
   const filteredDoctors = DOCTORS_DATA.filter(doc => {
     const matchesSpecialty = selectedSpecialty === 'All' || doc.specialty === selectedSpecialty;
@@ -34,11 +29,11 @@ function FindSpecialist({ userName, onBackToHome, onSelectDoctor }: FindSpeciali
   return (
     <div className="specialist-container">
       <nav className="navbar">
-        <div className="nav-left" onClick={onBackToHome} style={{ cursor: 'pointer' }}>
-          <div className="logo-icon">{userName ? userName.substring(0, 2).toUpperCase() : ''}</div>
+        <div className="nav-left" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+          <div className="logo-icon">{userName ? userName.substring(0, 2).toUpperCase() : 'CC'}</div>
         </div>
         <div className="nav-center"><span className="nav-link active">Find a Specialist</span></div>
-        <div className="nav-right"><button className="btn-back" onClick={onBackToHome}>← Back to Home</button></div>
+        <div className="nav-right"><button className="btn-back" onClick={() => navigate('/')}>← Back to Home</button></div>
       </nav>
 
       <div className="specialist-content">
@@ -72,8 +67,7 @@ function FindSpecialist({ userName, onBackToHome, onSelectDoctor }: FindSpeciali
                 </div>
                 <div className="doc-body">
                   <p><strong>Next Availability:</strong> {doc.availability}</p>
-                  {/* عند الضغط بنباصي أوبجكت الدكتور بالكامل */}
-                  <button className="btn-book" onClick={() => onSelectDoctor(doc)}>Book Appointment</button>
+                  <button className="btn-book" onClick={() => navigate('/booking', { state: { doctor: doc } })}>Book Appointment</button>
                 </div>
               </div>
             ))}
